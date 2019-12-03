@@ -8,7 +8,7 @@ describe(`Mouse position`, () => {
 		const y = Math.random() * 1024 | 0;
 
 		describe(`Mouse position ${x}x${y}`, () => {
-			describe('pageMouseX/Y', () => {
+			describe('pageX/Y', () => {
 				it(`mouse event should update page position from pageX/Y event if clientX/Y is available`, () => {
 					const input = new MouseInput();
 					const event = new MouseEvent("mouseup", {
@@ -20,8 +20,8 @@ describe(`Mouse position`, () => {
 
 					input.handleEvent(event);
 
-					assert.equal(input.pageMouseX, x);
-					assert.equal(input.pageMouseY, y);
+					assert.equal(input.pageX, x);
+					assert.equal(input.pageY, y);
 				});
 
 				it(`mouse event should update page position from clientX/Y when pageX/Y is not set`, () => {
@@ -33,12 +33,12 @@ describe(`Mouse position`, () => {
 
 					input.handleEvent(event);
 
-					assert.equal(input.pageMouseX, x);
-					assert.equal(input.pageMouseY, y);
+					assert.equal(input.pageX, x);
+					assert.equal(input.pageY, y);
 				});
 			});
 
-			describe('screenMouseX/Y', () => {
+			describe('screenX/Y', () => {
 				const x = Math.random() * 1024 | 0;
 				const y = Math.random() * 1024 | 0;
 
@@ -51,12 +51,12 @@ describe(`Mouse position`, () => {
 
 					input.handleEvent(event);
 
-					assert.equal(input.screenMouseX, x);
-					assert.equal(input.screenMouseY, y);
+					assert.equal(input.screenX, x);
+					assert.equal(input.screenY, y);
 				});
 			});
 
-			describe('localMouseX/Y', () => {
+			describe('localX/Y', () => {
 				const containers: HTMLElement[] = [
 					{offsetLeft: 0, offsetTop: 0},
 					{offsetLeft: Math.random() * 999 | 0, offsetTop: 0},
@@ -78,8 +78,8 @@ describe(`Mouse position`, () => {
 
 					input.handleEvent(event);
 
-					assert.equal(input.localMouseX, x);
-					assert.equal(input.localMouseY, y);
+					assert.equal(input.localX, x);
+					assert.equal(input.localY, y);
 				});
 
 				containers.forEach(container => {
@@ -96,8 +96,8 @@ describe(`Mouse position`, () => {
 
 						input.handleEvent(event);
 
-						assert.equal(input.localMouseX, x - container.offsetLeft);
-						assert.equal(input.localMouseY, y - container.offsetTop);
+						assert.equal(input.localX, x - container.offsetLeft);
+						assert.equal(input.localY, y - container.offsetTop);
 					});
 				});
 			});
@@ -124,8 +124,8 @@ describe(`Mouse position`, () => {
 						input.scaleProperties.scaleX = scale.scaleX;
 						input.scaleProperties.scaleY = scale.scaleY;
 
-						assert.equal(input.scaledMouseX, x / scale.scaleX - scale.offsetX);
-						assert.equal(input.scaledMouseY, y / scale.scaleY - scale.offsetY);
+						assert.equal(input.scaledX, x / scale.scaleX - scale.offsetX);
+						assert.equal(input.scaledY, y / scale.scaleY - scale.offsetY);
 					});
 				});
 			});

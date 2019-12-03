@@ -24,7 +24,7 @@ describe('KeyboardInput', () => {
 		};
 
 		const input = new KeyboardInput();
-		input.registerEventsInDocument(fauxDocument as any);
+		input.registerListeners(fauxDocument as any);
 
 		const expectedListeners = [
 			['keydown', input.handleEvent],
