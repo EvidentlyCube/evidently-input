@@ -1,6 +1,6 @@
 {
   "name": "evidently-input",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "TypeScript powered for easily handling input in your games.",
   "main": "dist/index.js",
   "files": [

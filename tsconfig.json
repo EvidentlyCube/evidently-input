@@ -10,8 +10,7 @@
 		"allowJs": false,
 		"strict": true,
 		"strictNullChecks": false,
-		"rootDir": "src",
-		"inlineSourceMap": true
+		"rootDir": "src"
 	},
 	"include": [
 		"./src"
