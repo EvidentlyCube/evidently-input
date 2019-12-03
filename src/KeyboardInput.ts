@@ -133,9 +133,9 @@ export class KeyboardInput {
 	 * Registers the `keydown` and `keyup` listeners on the passed element so that the class
 	 * can handle the input.
 	 *
-	 * @param {HTMLElement} element To avoid issues with focus it's best to pass `document` here
+	 * @param {GlobalEventHandlers} element To avoid issues with focus it's best to pass `document` here
 	 */
-	public registerListeners(element: HTMLElement): void {
+	public registerListeners(element: GlobalEventHandlers): void {
 		element.addEventListener("keydown", this.handleEvent);
 		element.addEventListener("keyup", this.handleEvent);
 	}

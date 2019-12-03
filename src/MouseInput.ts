@@ -164,9 +164,9 @@ export class MouseInput {
 	 * Registers the `mousemove`, `mosedown` and `mouseup` listeners on the passed element so that the class
 	 * can handle the input.
 	 *
-	 * @param {HTMLElement} element To avoid issues with focus it's best to pass `document` here
+	 * @param {GlobalEventHandlers} element To avoid issues with focus it's best to pass `document` here
 	 */
-	public registerListeners(element: HTMLElement): void {
+	public registerListeners(element: GlobalEventHandlers): void {
 		element.addEventListener("mousedown", this.handleEvent);
 		element.addEventListener("mouseup", this.handleEvent);
 		element.addEventListener("mousemove", this.handleEvent);
