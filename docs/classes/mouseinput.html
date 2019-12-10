@@ -72,6 +72,7 @@
 					<ol>
 						<li>Create a new instance of <code>MouseInput</code>.</li>
 						<li>Call <code>registerListeners()</code> passing the <code>document</code>.</li>
+						<li>Set <code>inputContainer</code> to the canvas element created by PIXI.</li>
 						<li>Call <code>update</code> <strong>at the end</strong> of every update frame of your game.</li>
 						<li>Use the functions of this library in your code.</li>
 					</ol>
@@ -154,6 +155,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mouseinput.html#flush" class="tsd-kind-icon">flush</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mouseinput.html#handlecontextmenuevent" class="tsd-kind-icon">handle<wbr>Context<wbr>Menu<wbr>Event</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mouseinput.html#handleevent" class="tsd-kind-icon">handle<wbr>Event</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mouseinput.html#ismousedown" class="tsd-kind-icon">is<wbr>Mouse<wbr>Down</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="mouseinput.html#ismousepressed" class="tsd-kind-icon">is<wbr>Mouse<wbr>Pressed</a></li>
@@ -177,7 +179,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L119">MouseInput.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L137">MouseInput.ts:137</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="mouseinput.html" class="tsd-signature-type">MouseInput</a></h4>
@@ -193,9 +195,17 @@
 					<div class="tsd-signature tsd-kind-icon">input<wbr>Container<span class="tsd-signature-symbol">:</span> <a href="../interfaces/inputrelativecontainer.html" class="tsd-signature-type">InputRelativeContainer</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L70">MouseInput.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L77">MouseInput.ts:77</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>When provided, <code>local</code> mouse position will be calculated treating this as a reference. Most of the time it&#39;ll
+								be the canvas element created by PIXI to render the game into.
+								If the game does not begin in the top-left corner of the HTML page it has to be set for <code>local</code> mouse
+							position to be calculated correctly.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="scaleproperties" class="tsd-anchor"></a>
@@ -203,9 +213,22 @@
 					<div class="tsd-signature tsd-kind-icon">scale<wbr>Properties<span class="tsd-signature-symbol">:</span> <a href="../interfaces/mouseinputrelativescaleprops.html" class="tsd-signature-type">MouseInputRelativeScaleProps</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L71">MouseInput.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L89">MouseInput.ts:89</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>When viewport of the game changes there are two common solutions:</p>
+							<ol>
+								<li>Change the workspace of the game (ie. player sees more/less of the play area)</li>
+								<li>Scale the game up (ie. everything get bigger/smaller)</li>
+							</ol>
+						</div>
+						<p><code>scaleProperties</code> is used in the second situation. When your game is scaled and possibly offset
+							(when you prefer keeping the display ratio) inside its container <code>local</code> mouse positions will not
+							take those changes into consideration while <code>scaled</code> mouse positions will, provided
+						<code>MouseInputRelativeScaleProps</code> is set correctly.</p>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -220,7 +243,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L105">MouseInput.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L123">MouseInput.ts:123</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -237,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L109">MouseInput.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L127">MouseInput.ts:127</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -254,7 +277,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L113">MouseInput.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L131">MouseInput.ts:131</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -271,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L81">MouseInput.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L99">MouseInput.ts:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -288,7 +311,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L85">MouseInput.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L103">MouseInput.ts:103</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -305,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L73">MouseInput.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L91">MouseInput.ts:91</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -322,7 +345,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L77">MouseInput.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L95">MouseInput.ts:95</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -339,7 +362,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L97">MouseInput.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L115">MouseInput.ts:115</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -356,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L101">MouseInput.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L119">MouseInput.ts:119</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -373,7 +396,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L89">MouseInput.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L107">MouseInput.ts:107</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -390,7 +413,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L93">MouseInput.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L111">MouseInput.ts:111</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -410,7 +433,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L151">MouseInput.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L169">MouseInput.ts:169</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -424,6 +447,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="handlecontextmenuevent" class="tsd-anchor"></a>
+					<h3>handle<wbr>Context<wbr>Menu<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Context<wbr>Menu<wbr>Event<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L220">MouseInput.ts:220</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <span class="tsd-signature-type">Event</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="handleevent" class="tsd-anchor"></a>
 					<h3>handle<wbr>Event</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -433,7 +479,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L182">MouseInput.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L202">MouseInput.ts:202</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -467,7 +513,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L117">MouseInput.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L135">MouseInput.ts:135</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -490,7 +536,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L118">MouseInput.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L136">MouseInput.ts:136</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -513,7 +559,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L119">MouseInput.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L137">MouseInput.ts:137</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -530,25 +576,26 @@
 					<a name="registerlisteners" class="tsd-anchor"></a>
 					<h3>register<wbr>Listeners</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">register<wbr>Listeners<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLElement</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>Listeners<span class="tsd-signature-symbol">(</span>element<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">GlobalEventHandlers</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L169">MouseInput.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L188">MouseInput.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Registers the <code>mousemove</code>, <code>mosedown</code> and <code>mouseup</code> listeners on the passed element so that the class
-									can handle the input.</p>
+										can handle the input.
+									This also registers an event that blocks right mouse button context menu from appearing.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>element: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<h5>element: <span class="tsd-signature-type">GlobalEventHandlers</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>To avoid issues with focus it&#39;s best to pass <code>document</code> here</p>
 									</div>
@@ -568,7 +615,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/15bc684/src/MouseInput.ts#L142">MouseInput.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/EvidentlyCube/evidently-input/blob/11091e4/src/MouseInput.ts#L160">MouseInput.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -647,6 +694,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="mouseinput.html#flush" class="tsd-kind-icon">flush</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="mouseinput.html#handlecontextmenuevent" class="tsd-kind-icon">handle<wbr>Context<wbr>Menu<wbr>Event</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="mouseinput.html#handleevent" class="tsd-kind-icon">handle<wbr>Event</a>

@@ -1,8 +1,8 @@
 import 'mocha';
 import {assert} from 'chai';
-import {MouseInput} from "../src/MouseInput";
+import {MouseButtons, MouseInput} from "../src/MouseInput";
 
-const buttons = [0, 1, 2];
+const buttons = [MouseButtons.Left, MouseButtons.Middle, MouseButtons.Right];
 
 function buttonsCase(description: string, callback: { (button: number): void }): void {
 	describe(description, () => {

@@ -21,8 +21,9 @@ export enum MouseButtons {
  *
  * 1. Create a new instance of `MouseInput`.
  * 2. Call `registerListeners()` passing the `document`.
- * 3. Call `update` **at the end** of every update frame of your game.
- * 4. Use the functions of this library in your code.
+ * 3. Set `inputContainer` to the canvas element created by PIXI.
+ * 4. Call `update` **at the end** of every update frame of your game.
+ * 5. Use the functions of this library in your code.
  *
  * ### Different mouse positions
  *
@@ -67,7 +68,24 @@ export class MouseInput {
 	private _mouseButtonsPressed: number[];
 	private _mouseButtonsReleased: number[];
 
+	/**
+	 * When provided, `local` mouse position will be calculated treating this as a reference. Most of the time it'll
+	 * be the canvas element created by PIXI to render the game into.
+	 * If the game does not begin in the top-left corner of the HTML page it has to be set for `local` mouse
+	 * position to be calculated correctly.
+	 */
 	public inputContainer?: InputRelativeContainer;
+
+	/**
+	 * When viewport of the game changes there are two common solutions:
+	 *  1. Change the workspace of the game (ie. player sees more/less of the play area)
+	 *  2. Scale the game up (ie. everything get bigger/smaller)
+	 *
+	 * `scaleProperties` is used in the second situation. When your game is scaled and possibly offset
+	 * (when you prefer keeping the display ratio) inside its container `local` mouse positions will not
+	 * take those changes into consideration while `scaled` mouse positions will, provided
+	 * `MouseInputRelativeScaleProps` is set correctly.
+	 */
 	public readonly scaleProperties: MouseInputRelativeScaleProps;
 
 	public get pageX(): number {
@@ -163,6 +181,7 @@ export class MouseInput {
 	/**
 	 * Registers the `mousemove`, `mosedown` and `mouseup` listeners on the passed element so that the class
 	 * can handle the input.
+	 * This also registers an event that blocks right mouse button context menu from appearing.
 	 *
 	 * @param {GlobalEventHandlers} element To avoid issues with focus it's best to pass `document` here
 	 */
@@ -170,6 +189,7 @@ export class MouseInput {
 		element.addEventListener("mousedown", this.handleEvent);
 		element.addEventListener("mouseup", this.handleEvent);
 		element.addEventListener("mousemove", this.handleEvent);
+		element.addEventListener('contextmenu', this.handleContextMenuEvent);
 	}
 
 	/**
@@ -196,4 +216,10 @@ export class MouseInput {
 			this._mouseButtonsPressed.push(event.button);
 		}
 	};
+
+	public handleContextMenuEvent = (event: Event): boolean => {
+		event.preventDefault();
+
+		return false;
+	}
 }

@@ -23,35 +23,7 @@ describe('MouseInput', () => {
 		assert.equal(input.isAnyMouseReleased, false);
 	});
 
-	it('Should register events to document correctly', () => {
-		const fauxDocument = {
-			events: new Array<[string, (...rest: any[]) => any]>(),
-			addEventListener: function(event: string, listener: (...rest: any[]) => any) {
-				this.events.push([event, listener]);
-			},
-		};
-
-		const input = new MouseInput();
-		input.registerListeners(fauxDocument as any);
-
-		const expectedListeners = [
-			['mousemove', input.handleEvent],
-			['mousedown', input.handleEvent],
-			['mouseup', input.handleEvent],
-		];
-
-		assert.lengthOf(fauxDocument.events, expectedListeners.length);
-		expectedListeners.forEach(expected => {
-			const given = fauxDocument.events.find(x => x[0] === expected[0]);
-
-			if (!given) {
-				assert.fail(`No listener registered for event ${expected[0]}`);
-			}
-
-			assert.equal(given[1], expected[1], `Wrong listener registered for event ${expected[0]}`);
-		});
-	});
-
+	require('./MouseInput.eventListeners');
 	require('./MouseInput.mousePosition');
 	require('./MouseInput.mouseButtons');
 
