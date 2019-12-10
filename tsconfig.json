@@ -10,7 +10,7 @@
 		"allowJs": false,
 		"strict": true,
 		"strictNullChecks": false,
-		"rootDir": "."
+		"rootDir": "src"
 	},
 	"include": [
 		"./src"
